@@ -1,3 +1,4 @@
+
 dim n,n1,n2,operador(3),resp,resultado,cont,calculo, resp1,sorteio,sorteio1,sorteio2 
 call inicio
 
@@ -38,21 +39,27 @@ end if
 resp=cint(inputbox("ACERTE O CALCULO MATEMATICO" + vbnewline & _
 				   "=============================" + vbnewline &_
 				   "    "& sorteio1 &" "& operador(sorteio) &" "& sorteio2 &" = ???", "RESOLVA"))
-
-			if resp = resultado then
-				cont = cont + 1
-				calculo=(msgbox("PARABENS VOCE ACERTOU!" + vbnewline &_
-				                "QUANTIDADE DE ACERTOS: "& cont & "", vbinformation + vbOKOnly,"AVISO"))
-				call jogo
-			else
-				msgbox("VOCE ERROU"), vbInformation + vbOK, "ATENCAO"
-                resp1=msgbox("DESEJA JOGAR NOVAMENTE",vbquestion + vbyesno,"ATENCAO")
-                if resp1=vbyes then
-	               call inicio
-                else
-                   wscript.quit
-                end if	
-			end if
-
+	if resp = resultado then
+		cont = cont + 1
+		calculo=(msgbox("PARABENS VOCE ACERTOU!" + vbnewline &_
+						"QUANTIDADE DE ACERTOS: "& cont & "", vbinformation + vbOKOnly,"AVISO"))
+		call jogo
+	else
+		msgbox("VOCE ERROU"), vbInformation + vbOK, "ATENCAO"
+		resp1=msgbox("DESEJA JOGAR NOVAMENTE",vbquestion + vbyesno,"ATENCAO")
+		if resp1=vbyes then
+			call inicio
+		else
+			wscript.quit
+		end if	
+	end if
 end sub
 
+sub  sair()
+resp1=msgbox("DESEJA JOGAR NOVAMENTE",vbquestion + vbyesno,"ATENCAO")
+if resp=vbyes then
+	call inicio
+else
+	wscript.quit
+end if	
+end sub
